@@ -24,7 +24,7 @@ API Gateway можно разделить условно на два класс�
     1) наличие api-gatawey у провайдера
     2) при использовании self-hosted рассмотрел бы варианты приведённые в таблице ниже.
 
-https://www.g2.com/categories/api-management?utf8=%E2%9C%93&selected_view=grid#grid
+[G2 Grid® for API Management Tools](https://www.g2.com/categories/api-management?utf8=%E2%9C%93&selected_view=grid#grid)
 
 | Название             |               язык/плагины/основа           |                            |                       Хранение конфигурации               | Authentication check | HTTPS Termination |
 |----------------------|-------------------------------------------|--------------------------------|---------------------------------------------------------|---------------------|-----------------|
@@ -43,7 +43,7 @@ https://www.g2.com/categories/api-management?utf8=%E2%9C%93&selected_view=grid#g
 
 Отдельно стоит рассмотреть ценовую политику Cloud-Based решений, т.к. она может сильно отличаться в зависимости от предполагаемой нагрузки и облачного провайдера, в некоторых случаях будет предпочтительней поднять/использовать Self-Hosted решения.
 
-[Grid](https://www.g2.com/categories/api-management?utf8=%E2%9C%93&selected_view=grid#grid)
+[G2 Grid® for API Management Tools](https://www.g2.com/categories/api-management?utf8=%E2%9C%93&selected_view=grid#grid)
 
 [API Gateway's](https://landscape.cncf.io/card-mode?category=api-gateway)
 
