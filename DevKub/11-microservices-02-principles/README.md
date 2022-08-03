@@ -43,6 +43,7 @@ https://www.g2.com/categories/api-management?utf8=%E2%9C%93&selected_view=grid#g
 
 Отдельно стоит рассмотреть ценовую политику Cloud-Based решений, т.к. она может сильно отличаться в зависимости от предполагаемой нагрузки и облачного провайдера, в некоторых случаях будет предпочтительней поднять/использовать Self-Hosted решения.
 
+[Grid](https://www.g2.com/categories/api-management?utf8=%E2%9C%93&selected_view=grid#grid)
 
 [API Gateway's](https://landscape.cncf.io/card-mode?category=api-gateway)
 
