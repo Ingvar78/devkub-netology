@@ -10,7 +10,7 @@
 
 ## Блок 11. Микросервисная архитектура
 
-11.1 [] [Введение в микросервисы](./DevKub/11-microservices-01-intro)
+11.1 [X] [Введение в микросервисы](./DevKub/11-microservices-01-intro)
 
 11.2 [] [Микросервисы: принципы](./DevKub/11-microservices-02-principles)
 
