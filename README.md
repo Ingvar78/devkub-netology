@@ -12,7 +12,7 @@
 
 11.1 [X] [Введение в микросервисы](./DevKub/11-microservices-01-intro)
 
-11.2 [] [Микросервисы: принципы](./DevKub/11-microservices-02-principles)
+11.2 [x] [Микросервисы: принципы](./DevKub/11-microservices-02-principles)
 
 11.3 [Микросервисы: подходы](./DevKub/11-microservices-03-approaches)
 
