@@ -1,93 +1,3 @@
-
-# Домашнее задание к занятию "11.02 Микросервисы: принципы"
-
-Вы работаете в крупной компанию, которая строит систему на основе микросервисной архитектуры.
-Вам как DevOps специалисту необходимо выдвинуть предложение по организации инфраструктуры, для разработки и эксплуатации.
-
-## Задача 1: API Gateway 
-
-Предложите решение для обеспечения реализации API Gateway. Составьте сравнительную таблицу возможностей различных программных решений. На основе таблицы сделайте выбор решения.
-
-Решение должно соответствовать следующим требованиям:
-- Маршрутизация запросов к нужному сервису на основе конфигурации
-- Возможность проверки аутентификационной информации в запросах
-- Обеспечение терминации HTTPS
-
-Обоснуйте свой выбор.
-
----
-
-API Gateway можно разделить условно на два класса: Cloud-Based - облачные (предоставляемые облачными провайдерами: AWS API Gateway, Google Cloud API Gateway, Azure API Management, IBM API Connect, SberCloud API Gateway, Yandex API Gateway) 
-и "Self-Hosted" - разворачиваемые на 'своём' сервере (Kong, Tyk.io,KrakenD). 
-
-Не смотря на условное деление на облачные и self-hosted, большинство из представленных на текущий момент API Gateway поддерживают маршрутизацию запросов к нужному сервису на основе конфигурации, обладают возможностью проверки аутентификационной информации в запросах и обеспечивают терминацию HTTPS. При выборе конкретного API Gatawey я бы ориентировался на следующие дополниетельные моменты: 
-    1) наличие api-gatawey у провайдера
-    2) при использовании self-hosted рассмотрел бы варианты приведённые в таблице ниже.
-
-[G2 Grid® for API Management Tools](https://www.g2.com/categories/api-management?utf8=%E2%9C%93&selected_view=grid#grid)
-
-| Название             |               язык/плагины/основа           |                            |                       Хранение конфигурации               | Authentication check | HTTPS Termination |
-|:----------------------|:-------------------------------------------|:--------------------------------|:---------------------------------------------------------|:---------------------|:-----------------|
-| Kong                 | OpenResty + Lua (on top of Nginx)         |  условнобесплатен   https://konghq.com/pricing |               Database (Postges, Cassandra)               |          Да           |         Да         |
-| | |    (дополнительная функциональность за плату)    |                             |                    |                  |
-| Tyk.io               |         Go + JavaScript plugins         | условнобесплатен | Files, JSON  |          Да           |        Да         |
-|               |                  | https://tyk.io/price-comparison/ |  |                    |                  |
-| Express Gateway      |                JavaScript                 |               Да                |                        Files, JSON                        |          Да           |         Да         |
-| KrakenD              | Go + поддержка плагинов на других языках  |               Да                |            Files, JSON + другие форматы            |       Да (JWT)        |         Да         |
-
-
-Относительно Cloud-Based решений - практически все они обладают необходимыми возможностями, по этой причине основным критерием при использовании других сервисов того же провайдера предпочтение можно отдать API Gateway этого же провайдера. 
-В качестве нескольких примеров: 
-    - компания размещает сервисы на серверах Amazon - логично выбрать решение от той же компании: AWS API Gateway.
-    - используем сервера и сервисы SberCloud - SberCloud API Gateway.
-
-Отдельно стоит рассмотреть ценовую политику Cloud-Based решений, т.к. она может сильно отличаться в зависимости от предполагаемой нагрузки и облачного провайдера, в некоторых случаях будет предпочтительней поднять/использовать Self-Hosted решения.
-
-[G2 Grid® for API Management Tools](https://www.g2.com/categories/api-management?utf8=%E2%9C%93&selected_view=grid#grid)
-
-[API Gateway's](https://landscape.cncf.io/card-mode?category=api-gateway)
-
-[Облачные API Gateway: зачем нужны подобные сервисы и чем они отличаются у разных платформ](https://habr.com/ru/post/557004/)
-
-[Прокладываем тропинки до микросервисов](https://habr.com/ru/company/otus/blog/669342/)
-
-
-## Задача 2: Брокер сообщений
-
-Составьте таблицу возможностей различных брокеров сообщений. На основе таблицы сделайте обоснованный выбор решения.
-
-Решение должно соответствовать следующим требованиям:
-- Поддержка кластеризации для обеспечения надежности
-- Хранение сообщений на диске в процессе доставки
-- Высокая скорость работы
-- Поддержка различных форматов сообщений
-- Разделение прав доступа к различным потокам сообщений
-- Простота эксплуатации
-
-Обоснуйте свой выбор.
-
----
-
-[Комплексное сравнение Kafka, Rabbitmq, RocketMQ, ActiveMQ](https://russianblogs.com/article/20011881592/)
-
-[Кафка против RabbitMQ - прямое сравнение на 2022 год](https://translated.turbopages.org/proxy_u/en-ru.ru.1766beef-62ec38d4-59484eb9-74722d776562/https/www.projectpro.io/article/kafka-vs-rabbitmq/451)
-
-[Kafka, RabbitMQ или AWS SNS/SQS: какой брокер выбрать?](https://habr.com/ru/post/573358/)
-
-[Kafka vs ActiveMQ vs RabbitMQ vs Amazon SNS vs Amazon SQS vs Google pub/sub](https://medium.com/double-pointer/kafka-vs-activemq-vs-rabbitmq-vs-amazon-sns-vs-amazon-sqs-vs-google-pub-sub-4b57976438db)
-
-[G2 Grid® for Message Queue (MQ)](https://www.g2.com/categories/message-queue-mq#grid)
-
-
-|Брокер      | Поддержка кластеризации | Хранение сообщений на диске| Высокая скорость | Поддержка различных форматов | Разделение прав доступа | Проcтота эксплуатации |
-|:-----------|:-----------------------:|:--------------------------:|:----------------:|:----------------------------:|:-----------------------:|:---------------------:|
-|Kafka       | + | + | + | + | + | + |
-|RabbitMQ    | + | + | + | + | + | + |
-|ActiveMQ    | + | + | - | + | + | - |
-|Redis       | + | - | + | + | + | + |
-
-
-
 ## Задача 3: API Gateway * (необязательная)
 
 ### Есть три сервиса:
@@ -148,8 +58,98 @@ curl -X GET http://localhost/images/4e6df220-295e-4231-82bc-45e4b1484430.jpg
 
 ---
 
-### Как оформить ДЗ?
+# Как запускать
+После написания nginx.conf для запуска выполните команду
+```
+docker-compose up --build
+```
 
-Выполненное домашнее задание пришлите ссылкой на .md-файл в вашем репозитории.
+# Как тестировать
 
----
+## Login
+Получить токен
+```
+curl -X POST -H 'Content-Type: application/json' -d '{"login":"bob", "password":"qwe123"}' http://localhost/token
+```
+
+Пример
+```
+$ curl -X POST -H 'Content-Type: application/json' -d '{"login":"bob", "password":"qwe123"}' http://localhost/token
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib2IifQ.hiMVLmssoTsy1MqbmIoviDeFPvo-nCd92d4UFiN2O2I
+```
+
+```bash
+iva@c9v:~/Documents $ curl -X POST -H 'Content-Type: application/json' -d '{"login":"bob", "password":"qwe123"}' http://localhost/token
+eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib2IifQ.hiMVLmssoTsy1MqbmIoviDeFPvo-nCd92d4UFiN2O2I
+iva@c9v:~/Documents $ 
+```
+
+
+## Test
+Использовать полученный токен для загрузки картинки
+```
+curl -X POST -H 'Authorization: Bearer <TODO: INSERT TOKEN>' -H 'Content-Type: octet/stream' --data-binary @1.jpg http://localhost/upload
+```
+Пример
+```
+$ curl -X POST -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib2IifQ.hiMVLmssoTsy1MqbmIoviDeFPvo-nCd92d4UFiN2O2I' -H 'Content-Type: octet/stream' --data-binary @1.jpg http://localhost/upload
+{"filename":"c31e9789-3fab-4689-aa67-e7ac2684fb0e.jpg"}
+```
+
+```
+iva@c9v:~/Documents/img $ curl -X POST -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib2IifQ.hiMVLmssoTsy1MqbmIoviDeFPvo-nCd92d4UFiN2O2I' -H 'Content-Type: octet/stream' --data-binary @dashboard1.png http://localhost/upload
+<html>
+<head><title>502 Bad Gateway</title></head>
+<body>
+<center><h1>502 Bad Gateway</h1></center>
+<hr><center>nginx/1.23.1</center>
+</body>
+</html>
+iva@c9v:~/Documents/img $ curl -X POST -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib2IifQ.hiMVLmssoTsy1MqbmIoviDeFPvo-nCd92d4UFiN2O2I' -H 'Content-Type: octet/stream' --data-binary @dashboard1.png http://localhost/upload
+{"filename":"2a17fb32-c949-4eac-b885-36d8ca164ef5.png"}
+iva@c9v:~/Documents/img $
+```
+
+ ## Проверить
+Загрузить картинку и проверить что она открывается
+```
+curl localhost/image/<filnename> > <filnename>
+```
+Example
+```
+$ curl localhost/images/c31e9789-3fab-4689-aa67-e7ac2684fb0e.jpg > c31e9789-3fab-4689-aa67-e7ac2684fb0e.jpg
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 13027  100 13027    0     0   706k      0 --:--:-- --:--:-- --:--:--  748k
+
+$ ls
+c31e9789-3fab-4689-aa67-e7ac2684fb0e.jpg
+```
+
+
+```
+iva@c9v:~/Documents/img $ curl localhost/images/2a17fb32-c949-4eac-b885-36d8ca164ef5.png >2a17fb32-c949-4eac-b885-36d8ca164ef5.png
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  144k  100  144k    0     0  47.1M      0 --:--:-- --:--:-- --:--:-- 47.1M
+iva@c9v:~/Documents/img $ ls -la
+total 2616
+drwxrwxr-x   2 iva iva   4096 Aug 10 00:55 .
+drwxr-xr-x. 10 iva iva    139 Aug 10 00:40 ..
+-rw-rw-r--   1 iva iva 148271 Aug 10 00:55 2a17fb32-c949-4eac-b885-36d8ca164ef5.png
+-rw-r--r--   1 iva iva 148271 Jun 30 00:58 dashboard1.png
+-rw-r--r--   1 iva iva 150611 Jun 30 01:13 dashboard2.png
+-rw-r--r--   1 iva iva 161129 Jun 30 02:15 dashboard3.png
+-rw-r--r--   1 iva iva  92039 Jun 30 00:39 grafana1.png
+-rw-r--r--   1 iva iva 126612 Jul  3 15:50 kibana01.png
+-rw-r--r--   1 iva iva 129199 Jul  3 15:55 Kibana02.png
+-rw-r--r--   1 iva iva 221046 Jul  7 11:14 Sentry01.png
+-rw-r--r--   1 iva iva 248409 Jul  7 11:14 Sentry02.png
+-rw-r--r--   1 iva iva  76802 Jul  7 11:15 Sentry03.png
+-rw-r--r--   1 iva iva 280465 Jul  7 11:39 Sentry04_st.png
+-rw-r--r--   1 iva iva 250857 Jul  7 12:21 Sentry_05.png
+-rw-r--r--   1 iva iva 234133 Jul  7 13:02 Sentry06.png
+-rw-r--r--   1 iva iva 241592 Jul  7 13:46 Sentry07_Issues.png
+-rw-r--r--   1 iva iva 135549 Jul  7 13:07 Sentry_slack.png
+
+```

@@ -2,7 +2,7 @@ from os import getenv
 from flask import Flask, request, make_response, jsonify
 from prometheus_flask_exporter import PrometheusMetrics, NO_PREFIX
 from passlib.hash import pbkdf2_sha256
-import jwt
+import jwt, logging, sys
 
 server = Flask(__name__)
 metrics = PrometheusMetrics(server, defaults_prefix=NO_PREFIX, buckets=[0.1, 0.5, 1, 1.5, 2], default_labels={"app_name": "security"})
@@ -21,7 +21,6 @@ def status():
 def login():
     if not request.json or not 'login' in request.json or not 'password' in request.json:
         return make_response(jsonify({'error':'Bad request'})), 400
-
     login = request.json['login']
     password = request.json['password']
     
@@ -31,14 +30,12 @@ def login():
     hash = data[login]
     if not pbkdf2_sha256.verify(password, hash):
         return make_response(jsonify({'error':'Unknown login or password'})), 401
-
     return jwt.encode({'sub': login}, jwt_key, algorithm="HS256")
 
 
 @server.route('/v1/token/validation', methods=['GET'])
 def validate():
     auth_header = request.headers.get('Authorization')
-
     if not auth_header:
         return make_response(jsonify({'error':'Missing Authorization header'})), 401 
     

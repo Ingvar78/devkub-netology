@@ -64,7 +64,7 @@ app.post('/v1/upload', (request, response) => {
 
         const id = uuidv4();
         const filename =  `${id}.${fileType.ext}`;
-        
+
         client.putObject(S3_BUCKET, filename, buf, function (err, objInfo) {
             if (err) {
                 console.error(`Failed to save file due to error ${err}`);
@@ -73,7 +73,7 @@ app.post('/v1/upload', (request, response) => {
             console.log(`Saved file: ${filename}`);
             return response.json({filename});
         })
-    });    
+    });
 });
 
 const port = PORT || 3000;
