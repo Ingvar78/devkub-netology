@@ -22,12 +22,6 @@
 
 ---
 
-[Блеск и нищета Kubernetes: достоинства и недостатки самой популярной DevOps-технологии для Big Data систем](https://www.bigdataschool.ru/blog/plus-disadvantage-kubernetes.html#:~:text=%D0%A1%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D1%83%D0%B5%D1%82%20%D0%BC%D0%BD%D0%BE%D0%B6%D0%B5%D1%81%D1%82%D0%B2%D0%BE%20%D0%B0%D0%BB%D1%8C%D1%82%D0%B5%D1%80%D0%BD%D0%B0%D1%82%D0%B8%D0%B2%20Kubernetes%3A%20Docker,Azure%20Container%20Service%20%5B3%5D.)
-
-[OpenShift как корпоративная версия Kubernetes](https://habr.com/ru/company/redhatrussia/blog/494254/)
-
-[CERTIFIED KUBERNETES SOFTWARE CONFORMANCE](https://www.cncf.io/certification/software-conformance/)
-
 Одним из решений соответсвующим требованиям является Kubernetes - открытое программное обеспечение для оркестровки контейнеризированных приложений, автоматизации их развёртывания, масштабирования и координации в условиях кластера. 
 Поддерживает основные технологии контейнеризации, включая Docker, также возможна поддержка технологий аппаратной виртуализации. Обеспечивает обнаружение сервисов и маршрутизацию запросов, возможность горизонтального и вертикального масштабирования - как в ручном, так и в автоматическом режиме (autoscaling).
 Обеспечивает разделение ресурсов доступных извне и внутри системы. Поддерживает возможность конфигурирования приложения с помощью переменных среды, в том числе с возможностью безопасного хранения 'секретов', ключей доступа и паролей.
@@ -35,6 +29,16 @@
 Kubernetes - не единственный подходящий продукт, существуют разные конкуренты и альтернативы Kubernetes соответсвующие предъявляемым требованиям: Amazon ECS, Docker Swarm, Nomad, Redhat OpenShift - самые популярные альтернативы Kubernetes и конкуренты Kubernetes.
 
 Отдельно стоит остановиться на OpenShift в основе которого лежит сертифицированный Kubernetes и имеет 100% совместимость по API. помимо полной совместимости по API, Openshift предоставляет несколько дополнительных возможностей - в частности: 1) утилита oc (более мощный и удобный вариант Kubectl), 2) Web-UI 3) инструменты разработки 4) полностью законченный продукт для корпоративного применения.
+
+#Дополнительный материал по теме:
+
+ - [Блеск и нищета Kubernetes: достоинства и недостатки самой популярной DevOps-технологии для Big Data систем](https://www.bigdataschool.ru/blog/plus-disadvantage-kubernetes.html#:~:text=%D0%A1%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D1%83%D0%B5%D1%82%20%D0%BC%D0%BD%D0%BE%D0%B6%D0%B5%D1%81%D1%82%D0%B2%D0%BE%20%D0%B0%D0%BB%D1%8C%D1%82%D0%B5%D1%80%D0%BD%D0%B0%D1%82%D0%B8%D0%B2%20Kubernetes%3A%20Docker,Azure%20Container%20Service%20%5B3%5D.)
+
+ - [OpenShift как корпоративная версия Kubernetes](https://habr.com/ru/company/redhatrussia/blog/494254/)
+
+ - [CERTIFIED KUBERNETES SOFTWARE CONFORMANCE](https://www.cncf.io/certification/software-conformance/)
+
+
 
 ## Задача 2: Распределенный кэш * (необязательная)
 
@@ -133,7 +137,8 @@ M: 8ef1f831cffe15c808124f253e68bc76f6770d90 10.0.0.4:7004
 
 ```
 
+#Дополнительный материал по теме:
 
-[docker-compose redis-cluster](https://itsmetommy.com/2018/05/24/docker-compose-redis-cluster/)
+ - [docker-compose redis-cluster](https://itsmetommy.com/2018/05/24/docker-compose-redis-cluster/)
 
-[Set up a Redis Cluster for Production environments](https://success.outsystems.com/Documentation/How-to_Guides/Infrastructure/Configuring_OutSystems_with_Redis_in-memory_session_storage/Set_up_a_Redis_Cluster_for_Production_environments)
+ - [Set up a Redis Cluster for Production environments](https://success.outsystems.com/Documentation/How-to_Guides/Infrastructure/Configuring_OutSystems_with_Redis_in-memory_session_storage/Set_up_a_Redis_Cluster_for_Production_environments)
