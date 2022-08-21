@@ -16,12 +16,12 @@
 
 11.3 [x] [Микросервисы: подходы](./DevKub/11-microservices-03-approaches)
 
-11.4 [] [Микросервисы: масштабирование](./DevKub/11-microservices-04-scaling)
+11.4 [x] [Микросервисы: масштабирование](./DevKub/11-microservices-04-scaling)
 
 
 ## Блок 12. Администрирование кластера Kubernetes
 
-12.1 [Компоненты Kubernetes](./DevKub/12-kubernetes-01-intro)
+12.1 [] [Компоненты Kubernetes](./DevKub/12-kubernetes-01-intro)
 
 12.2 [Команды для работы с Kubernetes](./DevKub/12-kubernetes-02-commands)
 
