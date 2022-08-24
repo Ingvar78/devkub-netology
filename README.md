@@ -21,7 +21,7 @@
 
 ## Блок 12. Администрирование кластера Kubernetes
 
-12.1 [] [Компоненты Kubernetes](./DevKub/12-kubernetes-01-intro)
+12.1 [x] [Компоненты Kubernetes](./DevKub/12-kubernetes-01-intro)
 
 12.2 [Команды для работы с Kubernetes](./DevKub/12-kubernetes-02-commands)
 
