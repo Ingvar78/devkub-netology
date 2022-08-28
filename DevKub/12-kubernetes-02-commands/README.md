@@ -11,6 +11,20 @@
  * наличие deployment можно проверить командой kubectl get deployment
  * наличие подов можно проверить командой kubectl get pods
 
+```bash
+iva@u20n1:~$ kubectl delete deployment hello-node
+deployment.apps "hello-node" deleted
+iva@u20n1:~$ kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4 --replicas=2
+deployment.apps/hello-node created
+iva@u20n1:~$ kubectl get deployment
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+hello-node   2/2     2            2           2m5s
+iva@u20n1:~$ kubectl get pods
+NAME                          READY   STATUS    RESTARTS   AGE
+hello-node-6d5f754cc9-hd7zd   1/1     Running   0          4m25s
+hello-node-6d5f754cc9-j56rj   1/1     Running   0          4m25s
+```
+![Screenshot](./img/Kube_2replicas.png)
 
 ## Задание 2: Просмотр логов для разработки
 Разработчикам крайне важно получать обратную связь от штатно работающего приложения и, еще важнее, об ошибках в его работе. 
