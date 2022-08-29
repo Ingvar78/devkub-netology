@@ -125,6 +125,8 @@ PodDisruptionBudget - так же влияет на высокую доступ�
 
 [Как работает CPU Manager в Kubernetes](https://habr.com/ru/company/flant/blog/418269/)
 
+[Рабочие узлы Kubernetes: много маленьких или несколько больших?](https://mcs.mail.ru/blog/rabochie-uzly-kubernetes-mnogo-malenkih-ili-neskolko-bolshih)
+
 [Компоненты Kubernetes](https://kubernetes.io/ru/docs/concepts/overview/components/)
 
 [KUBERNETES INSTANCE CALCULATOR](https://learnk8s.io/kubernetes-instance-calculator)
