@@ -25,7 +25,7 @@
 
 12.2 [x] [Команды для работы с Kubernetes](./DevKub/12-kubernetes-02-commands)
 
-12.3 [] [Развертывание кластера на собственных серверах, лекция 1](./DevKub/12-kubernetes-03-install-part-1)
+12.3 [x] [Развертывание кластера на собственных серверах, лекция 1](./DevKub/12-kubernetes-03-install-part-1)
 
 12.4 [Развертывание кластера на собственных серверах, лекция 2](./DevKub/12-kubernetes-04-install-part-2)
 
