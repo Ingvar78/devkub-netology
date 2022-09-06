@@ -69,7 +69,7 @@ yc-user@cp1:~/kubespray$ ansible-playbook -i inventory/mycluster/hosts.yaml clus
 
 ...
 
-PLAY RECAP ***************************************************************************************************************
+PLAY RECAP *************************************************************************************************************
 cp1                        : ok=743  changed=100  unreachable=0    failed=0    skipped=1246 rescued=0    ignored=9   
 localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 node1                      : ok=496  changed=54   unreachable=0    failed=0    skipped=728  rescued=0    ignored=2   
@@ -79,26 +79,26 @@ node4                      : ok=496  changed=55   unreachable=0    failed=0    s
 
 Tuesday 06 September 2022  22:20:00 +0000 (0:00:00.135)       0:19:34.259 ***** 
 =============================================================================== 
-download : download_container | Download image if required ------------------------------------------------------------- 56.81s
-network_plugin/calico : Wait for calico kubeconfig to be created ------------------------------------------------------- 52.98s
-kubernetes/control-plane : kubeadm | Initialize first master ----------------------------------------------------------- 40.56s
-download : download_container | Download image if required ------------------------------------------------------------- 33.72s
-kubernetes/kubeadm : Join to cluster ----------------------------------------------------------------------------------- 33.64s
-download : download_container | Download image if required ------------------------------------------------------------- 26.72s
-download : download_file | Validate mirrors ---------------------------------------------------------------------------- 24.72s
-download : download_container | Download image if required ------------------------------------------------------------- 23.30s
-download : download_container | Download image if required ------------------------------------------------------------- 23.04s
-download : download_container | Download image if required ------------------------------------------------------------- 20.82s
-download : download_container | Download image if required ------------------------------------------------------------- 19.03s
-kubernetes-apps/ansible : Kubernetes Apps | Start Resources ------------------------------------------------------------ 18.88s
-download : download_container | Download image if required ------------------------------------------------------------- 15.06s
-download : download_container | Download image if required ------------------------------------------------------------- 14.87s
-kubernetes/preinstall : Preinstall | wait for the apiserver to be running ---------------------------------------------- 9.65s
-kubernetes/node : install | Copy kubelet binary from download dir ------------------------------------------------------ 8.44s
-download : extract_file | Unpacking archive ---------------------------------------------------------------------------- 8.17s
-etcd : reload etcd ----------------------------------------------------------------------------------------------------- 8.06s
-download : download_container | Download image if required ------------------------------------------------------------- 7.97s
-adduser : User | Create User ------------------------------------------------------------------------------------------- 7.36s
+download : download_container | Download image if required ------------------------------------------------------ 56.81s
+network_plugin/calico : Wait for calico kubeconfig to be created ------------------------------------------------ 52.98s
+kubernetes/control-plane : kubeadm | Initialize first master ---------------------------------------------------- 40.56s
+download : download_container | Download image if required ------------------------------------------------------ 33.72s
+kubernetes/kubeadm : Join to cluster ---------------------------------------------------------------------------- 33.64s
+download : download_container | Download image if required ------------------------------------------------------ 26.72s
+download : download_file | Validate mirrors --------------------------------------------------------------------- 24.72s
+download : download_container | Download image if required ------------------------------------------------------ 23.30s
+download : download_container | Download image if required ------------------------------------------------------ 23.04s
+download : download_container | Download image if required ------------------------------------------------------ 20.82s
+download : download_container | Download image if required ------------------------------------------------------ 19.03s
+kubernetes-apps/ansible : Kubernetes Apps | Start Resources ----------------------------------------------------- 18.88s
+download : download_container | Download image if required ------------------------------------------------------ 15.06s
+download : download_container | Download image if required ------------------------------------------------------ 14.87s
+kubernetes/preinstall : Preinstall | wait for the apiserver to be running --------------------------------------- 9.65s
+kubernetes/node : install | Copy kubelet binary from download dir ----------------------------------------------- 8.44s
+download : extract_file | Unpacking archive --------------------------------------------------------------------- 8.17s
+etcd : reload etcd ---------------------------------------------------------------------------------------------- 8.06s
+download : download_container | Download image if required ------------------------------------------------------ 7.97s
+adduser : User | Create User ------------------------------------------------------------------------------------ 7.36s
 yc-user@cp1:~/kubespray$ mkdir -p $HOME/.kube
 yc-user@cp1:~/kubespray$     sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 yc-user@cp1:~/kubespray$     sudo chown $(id -u):$(id -g) $HOME/.kube/config
