@@ -12,6 +12,8 @@
 
 Созданы 5 ВМ в YC со следующими характеристиками: CPU 2/RAM 4/HDD 20 Gb (размер CPU/RAM определялись с учётом полученных ранее замечаний по HCL kubernetes)
 
+Развёртывание производим с использованием kubespray и [инструкции](https://github.com/aak74/kubernetes-for-beginners/blob/master/15-install/30-kubespray/README.md)
+
 ```
 iva@c9v:~/Documents/devkub-netology/DevKub/12-kubernetes-04-install-part-2  (12.4 *)$ yc compute instance list
 
@@ -110,6 +112,7 @@ node4   Ready    <none>          5m48s   v1.24.4
 
 ```
 
+Проверяем работу кластера
 
 ```bash
 iva@c9v:~/Documents $ kubectl get nodes
@@ -119,6 +122,13 @@ node1   Ready    <none>          11m   v1.24.4
 node2   Ready    <none>          11m   v1.24.4
 node3   Ready    <none>          11m   v1.24.4
 node4   Ready    <none>          11m   v1.24.4
+
+iva@c9v:~/Documents/devkub-netology/DevKub/12-kubernetes-04-install-part-2  (12.4)$ kubectl create deploy nginx --image=nginx:latest --replicas=2
+deployment.apps/nginx created
+iva@c9v:~/Documents/devkub-netology/DevKub/12-kubernetes-04-install-part-2  (12.4)$ kubectl get po -o wide
+NAME                     READY   STATUS    RESTARTS   AGE   IP            NODE    NOMINATED NODE   READINESS GATES
+nginx-7597c656c9-845kf   1/1     Running   0          57s   10.233.71.1   node3   <none>           <none>
+nginx-7597c656c9-z8h8h   1/1     Running   0          57s   10.233.75.1   node2   <none>           <none>
 
 ```
 
