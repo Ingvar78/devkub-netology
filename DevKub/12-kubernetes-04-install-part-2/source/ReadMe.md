@@ -175,6 +175,7 @@ node2   Ready    <none>          2m15s   v1.25.0
 
 добавим несколько новых worker node в кластер 
 
+```
 +----------------------+-------+---------------+---------+----------------+--------------+
 |          ID          | NAME  |    ZONE ID    | STATUS  |  EXTERNAL IP   | INTERNAL IP  |
 +----------------------+-------+---------------+---------+----------------+--------------+
@@ -185,8 +186,6 @@ node2   Ready    <none>          2m15s   v1.25.0
 | epdiulpf4j8b0mblsvhp | node1 | ru-central1-b | RUNNING | 51.250.27.141  | 192.168.0.30 |
 +----------------------+-------+---------------+---------+----------------+--------------+
 
-
-```
 iva@c9v:~/Documents/devkub-netology/DevKub/12-kubernetes-04-install-part-2/source  (12.4)$ kubectl get node
 NAME    STATUS     ROLES           AGE   VERSION
 cp1     Ready      control-plane   33m   v1.25.0
