@@ -12,6 +12,7 @@
 
 Созданы 5 ВМ в YC со следующими характеристиками: CPU 2/RAM 4/HDD 20 Gb (размер CPU/RAM определялись с учётом полученных ранее замечаний по HCL kubernetes)
 
+```
 iva@c9v:~/Documents/devkub-netology/DevKub/12-kubernetes-04-install-part-2  (12.4 *)$ yc compute instance list
 
 +----------------------+--------+---------------+---------+----------------+--------------+
@@ -24,8 +25,6 @@ iva@c9v:~/Documents/devkub-netology/DevKub/12-kubernetes-04-install-part-2  (12.
 | epdd3331mokn7a0j46ub | wnode4 | ru-central1-b | RUNNING | 51.250.100.224 | 192.168.0.12 |
 +----------------------+--------+---------------+---------+----------------+--------------+
 
-
-```bash
 iva@c9v:~ $ ssh yc-user@51.250.96.56
 
 yc-user@cp1:~$ sudo apt-get update && sudo apt-get install git
