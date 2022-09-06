@@ -161,18 +161,16 @@ root@node2:/home/yc-user#
 
 ```
 
-аналогично настраивается и первая нода.
+Аналогично настраивается и первая нода. Проверяем
 
-проверяем
-
+```
 iva@c9v:~/Documents/devkub-netology/DevKub/12-kubernetes-04-install-part-2/source  (12.4)$ kubectl get node
 NAME    STATUS   ROLES           AGE     VERSION
 cp1     Ready    control-plane   17m     v1.25.0
 node1   Ready    <none>          2m24s   v1.25.0
 node2   Ready    <none>          2m15s   v1.25.0
 
-
-````
+```
 
 добавим несколько новых worker node в кластер 
 
@@ -187,7 +185,7 @@ node2   Ready    <none>          2m15s   v1.25.0
 +----------------------+-------+---------------+---------+----------------+--------------+
 
 
-````
+```
 iva@c9v:~/Documents/devkub-netology/DevKub/12-kubernetes-04-install-part-2/source  (12.4)$ kubectl get node
 NAME    STATUS     ROLES           AGE   VERSION
 cp1     Ready      control-plane   33m   v1.25.0
@@ -196,10 +194,6 @@ node2   Ready      <none>          18m   v1.25.0
 node3   NotReady   <none>          2s    v1.25.0
 node4   NotReady   <none>          21s   v1.25.0
 
-```
-
-
-```
 va@c9v:~/Documents/devkub-netology/DevKub/12-kubernetes-04-install-part-2/source  (12.4)$ kubectl apply -f ./10-usage/templates/20-deployment-main.yaml 
 deployment.apps/main created
 iva@c9v:~/Documents/devkub-netology/DevKub/12-kubernetes-04-install-part-2/source  (12.4)$ kubectl get pods
