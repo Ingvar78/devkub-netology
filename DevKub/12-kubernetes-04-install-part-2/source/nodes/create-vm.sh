@@ -22,7 +22,9 @@ END
 }
 
 create_vm "cp1"
-create_vm "node1"
-create_vm "node2"
+create_vm "wnode1"
+create_vm "wnode2"
+create_vm "wnode3"
+create_vm "wnode4"
 
 yc compute instance list
