@@ -29,7 +29,7 @@
 
 12.4 [] [Развертывание кластера на собственных серверах, лекция 2](./DevKub/12-kubernetes-04-install-part-2)
 
-12.5 [Сетевые решения CNI](./DevKub/12-kubernetes-05-cni)
+12.5 [] [Сетевые решения CNI](./DevKub/12-kubernetes-05-cni)
 
 
 ## Модуль 13. Конфигурация Kubernetes	
