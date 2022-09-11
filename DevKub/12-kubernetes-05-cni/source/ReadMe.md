@@ -1,4 +1,5 @@
 
+```
 +----------------------+--------+---------------+---------+----------------+--------------+
 |          ID          |  NAME  |    ZONE ID    | STATUS  |  EXTERNAL IP   | INTERNAL IP  |
 +----------------------+--------+---------------+---------+----------------+--------------+
@@ -7,9 +8,11 @@
 | epdvkug6tpn4f7cndoqg | cp1    | ru-central1-b | RUNNING | 51.250.96.160  | 192.168.0.16 |
 +----------------------+--------+---------------+---------+----------------+--------------+
 
+```
 
 настройка кластера:
 
+```
 sudo apt-get update && sudo apt-get install git mc python3-pip
 cd .ssh/
 chmod 600 id_rsa
@@ -64,16 +67,18 @@ all:
     calico_rr:
       hosts: {}
 
+```
 
-
+```
 yc-user@cp1:~/kubespray$ history 
 ansible-playbook -i inventory/mycluster/hosts.yaml cluster.yml -b -v
 {     mkdir -p $HOME/.kube;     sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config;     sudo chown $(id -u):$(id -g) $HOME/.kube/config; }
 kubectl get pods -n kube-system
 kubectl get nodes
 
+```
 
-
+```
 PLAY RECAP *******************************************************************************************************************************************************************************************************************************************************************************
 cp1                        : ok=713  changed=139  unreachable=0    failed=0    skipped=1239 rescued=0    ignored=9   
 localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
@@ -117,10 +122,12 @@ node1   Ready    <none>          39m   v1.24.4   192.168.0.14   <none>        Ub
 node2   Ready    <none>          39m   v1.24.4   192.168.0.12   <none>        Ubuntu 20.04.4 LTS   5.4.0-124-generic   containerd://1.6.8
 yc-user@cp1:~/kubespray$ kubectl get netpol -A
 No resources found
+```
+
 
 для удобства настроил доступ с локальной машины где установлен calicoctl.
 
-
+```
 iva@c9v:~ $ calicoctl get nodes
 Failed to get resources: Version mismatch.
 Client Version:   v3.24.1
@@ -133,3 +140,4 @@ cp1
 node1   
 node2   
 
+```
