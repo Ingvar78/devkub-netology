@@ -7,6 +7,14 @@
 * регулируется с помощью deployment фронтенд и бекенд;
 * база данных — через statefulset.
 
+------------------------
+[How I create new namespace in Kubernetes](https://stackoverflow.com/questions/52901435/how-i-create-new-namespace-in-kubernetes)
+
+[Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+
+[Using Kubernetes to Deploy PostgreSQL](https://severalnines.com/blog/using-kubernetes-deploy-postgresql/)
+
+
 ## Задание 2: подготовить конфиг для production окружения
 Следующим шагом будет запуск приложения в production окружении. Требования сложнее:
 * каждый компонент (база, бекенд, фронтенд) запускаются в своем поде, регулируются отдельными deployment’ами;
