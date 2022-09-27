@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: main
+  namespace: stage
+  labels:
+    app: front-back
+spec:
+  selector:
+    matchLabels:
+      app: front-back
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: front-back
+    spec:
+      containers:
+      - image: egerpro/13frontend:0.0.1
+        imagePullPolicy: IfNotPresent
+        name: frontend
+      - image: egerpro/13backend:0.0.1
+        imagePullPolicy: IfNotPresent
+        name: backend
