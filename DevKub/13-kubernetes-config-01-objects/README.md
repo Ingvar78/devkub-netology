@@ -8,6 +8,31 @@
 * база данных — через statefulset.
 
 ------------------------
+
+
+[Namespace](/src/kub/stage/10-namespace.yml)
+
+[PersistentVolume](src/kub/stage/20-PersistentVolume.yml)
+
+[Postgres](src/kub/stage/30-postgres.yml)
+
+[Back+Front](src/kub/stage/40-front-back.yml)
+
+
+```bash
+va@c9v:~/Documents/devkub-netology/DevKub/13-kubernetes-config-01-objects  (13.1 *)$ kubectl get po -o wide
+NAME                              READY   STATUS    RESTARTS   AGE     IP               NODE    NOMINATED NODE   READINESS GATES
+app-front-back-5c888cb9cb-z698g   2/2     Running   0          3m50s   10.233.102.148   node1   <none>           <none>
+postgres-sts-0                    1/1     Running   0          32m     10.233.75.29     node2   <none>           <none>
+iva@c9v:~/Documents/devkub-netology/DevKub/13-kubernetes-config-01-objects  (13.1 *)$ kubectl get deployment -o wide
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE    CONTAINERS         IMAGES                                             SELECTOR
+app-front-back   1/1     1            1           4m1s   frontend,backend   egerpro/13frontend:0.0.1,egerpro/13backend:0.0.1   app=front-back
+```
+
+[Ход выполнения](src/kub/stage/ReadMe.md)
+
+### Дополнительные материалы
+
 [How I create new namespace in Kubernetes](https://stackoverflow.com/questions/52901435/how-i-create-new-namespace-in-kubernetes)
 
 [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)

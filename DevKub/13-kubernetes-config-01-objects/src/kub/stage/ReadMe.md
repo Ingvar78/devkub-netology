@@ -199,5 +199,100 @@ iva@c9v:~/Documents/devkub-netology/DevKub/13-kubernetes-config-01-objects/src/k
 NAME                    READY   STATUS    RESTARTS   AGE
 main-5c888cb9cb-x28tp   2/2     Running   0          10s
 postgres-sts-0          1/1     Running   0          19m
+iva@c9v:~/Documents/devkub-netology/DevKub/13-kubernetes-config-01-objects/src/kub/stage  (13.1 *)$ kubectl get deploy
+NAME      READY   UP-TO-DATE   AVAILABLE   AGE
+main      1/1     1            1           8m16s
+mainapp   1/1     1            1           23s
+iva@c9v:~/Documents/devkub-netology/DevKub/13-kubernetes-config-01-objects/src/kub/stage  (13.1 *)$ kubectl delete deploy --all
+deployment.apps "main" deleted
+deployment.apps "mainapp" deleted
+iva@c9v:~/Documents/devkub-netology/DevKub/13-kubernetes-config-01-objects/src/kub/stage  (13.1 *)$ kubectl apply -f 40-front-back.yml 
+deployment.apps/app-front-back created
+iva@c9v:~/Documents/devkub-netology/DevKub/13-kubernetes-config-01-objects/src/kub/stage  (13.1 *)$ kubectl get po
+NAME                              READY   STATUS        RESTARTS   AGE
+app-front-back-5c888cb9cb-z698g   2/2     Running       0          14s
+main-5c888cb9cb-x28tp             2/2     Terminating   0          9m33s
+mainapp-5c888cb9cb-n8946          2/2     Terminating   0          100s
+postgres-sts-0                    1/1     Running       0          29m
+iva@c9v:~/Documents/devkub-netology/DevKub/13-kubernetes-config-01-objects/src/kub/stage  (13.1 *)$ kubectl get po
+NAME                              READY   STATUS    RESTARTS   AGE
+app-front-back-5c888cb9cb-z698g   2/2     Running   0          30s
+postgres-sts-0                    1/1     Running   0          29m
+iva@c9v:~/Documents/devkub-netology/DevKub/13-kubernetes-config-01-objects/src/kub/stage  (13.1 *)$ kubectl get deployment
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE
+app-front-back   1/1     1            1           43s
+iva@c9v:~/Documents/devkub-netology/DevKub/13-kubernetes-config-01-objects/src/kub/stage  (13.1 *)$ kubectl get deployment -o wide
+NAME             READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS         IMAGES                                             SELECTOR
+app-front-back   1/1     1            1           52s   frontend,backend   egerpro/13frontend:0.0.1,egerpro/13backend:0.0.1   app=front-back
+iva@c9v:~/Documents/devkub-netology/DevKub/13-kubernetes-config-01-objects/src/kub/stage  (13.1 *)$ kubectl describe po app-front-back-5c888cb9cb-z698g
+Name:         app-front-back-5c888cb9cb-z698g
+Namespace:    stage
+Priority:     0
+Node:         node1/192.168.0.7
+Start Time:   Wed, 28 Sep 2022 01:33:18 +0300
+Labels:       app=front-back
+              pod-template-hash=5c888cb9cb
+Annotations:  cni.projectcalico.org/containerID: a404dbb39a2a4af23596427022df4a125460109508403dc9bdd2ddbae19622aa
+              cni.projectcalico.org/podIP: 10.233.102.148/32
+              cni.projectcalico.org/podIPs: 10.233.102.148/32
+Status:       Running
+IP:           10.233.102.148
+IPs:
+  IP:           10.233.102.148
+Controlled By:  ReplicaSet/app-front-back-5c888cb9cb
+Containers:
+  frontend:
+    Container ID:   containerd://014e45a160cc7cc6894c26ea78fdf98c77872a12653ac4ff0057320b7c6a7421
+    Image:          egerpro/13frontend:0.0.1
+    Image ID:       docker.io/egerpro/13frontend@sha256:3c1cbbb8ec77a9299cb34493baf4ba952d0de6e4b100f60cd6c4371e082b204c
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Wed, 28 Sep 2022 01:33:19 +0300
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-kfq7c (ro)
+  backend:
+    Container ID:   containerd://e8c8069c96990e621203633be2899a78b26e9be703b682c2f5cf900b2de9eb6b
+    Image:          egerpro/13backend:0.0.1
+    Image ID:       docker.io/egerpro/13backend@sha256:cfad3fd72c6ce735814d68af1d31ccd685d7e329b14aba79239d507965562c67
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Wed, 28 Sep 2022 01:33:19 +0300
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-kfq7c (ro)
+Conditions:
+  Type              Status
+  Initialized       True 
+  Ready             True 
+  ContainersReady   True 
+  PodScheduled      True 
+Volumes:
+  kube-api-access-kfq7c:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age    From               Message
+  ----    ------     ----   ----               -------
+  Normal  Scheduled  2m24s  default-scheduler  Successfully assigned stage/app-front-back-5c888cb9cb-z698g to node1
+  Normal  Pulled     2m23s  kubelet            Container image "egerpro/13frontend:0.0.1" already present on machine
+  Normal  Created    2m23s  kubelet            Created container frontend
+  Normal  Started    2m23s  kubelet            Started container frontend
+  Normal  Pulled     2m23s  kubelet            Container image "egerpro/13backend:0.0.1" already present on machine
+  Normal  Created    2m23s  kubelet            Created container backend
+  Normal  Started    2m23s  kubelet            Started container backend
 
 ```

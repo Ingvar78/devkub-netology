@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: main
+  name: app-front-back
   namespace: stage
   labels:
     app: front-back
