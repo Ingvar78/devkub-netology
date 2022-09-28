@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-back
+  namespace: prod
+  labels:
+    app: back
+spec:
+  selector:
+    matchLabels:
+      app: back
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: back
+    spec:
+      containers:
+      - image: egerpro/13backend:0.0.1
+        imagePullPolicy: IfNotPresent
+        name: backend
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: back-svc
+  namespace: prod
+  labels:
+    app: back
+spec:
+  selector:
+    app: back
+  type: ClusterIP
+  ports:
+  - name: back
+    protocol: TCP
+    port: 9000
+    targetPort: 9000
