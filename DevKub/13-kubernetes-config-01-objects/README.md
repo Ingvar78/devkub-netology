@@ -10,13 +10,13 @@
 ------------------------
 
 
-[Namespace](/src/kub/stage/10-namespace.yml)
+[Namespace](.//src/kub/stage/10-namespace.yml)
 
-[PersistentVolume](src/kub/stage/20-PersistentVolume.yml)
+[PersistentVolume](./src/kub/stage/20-PersistentVolume.yml)
 
-[Postgres](src/kub/stage/30-postgres.yml)
+[Postgres](./src/kub/stage/30-postgres.yml)
 
-[Back+Front](src/kub/stage/40-front-back.yml)
+[Back+Front](./src/kub/stage/40-front-back.yml)
 
 
 ```bash
@@ -47,11 +47,42 @@ app-front-back   1/1     1            1           4m1s   frontend,backend   eger
 * в окружении фронта прописан адрес сервиса бекенда;
 * в окружении бекенда прописан адрес сервиса базы данных.
 
+```
+iva@c9v:~/Documents/devkub-netology/DevKub/13-kubernetes-config-01-objects/src/kub/prod  (13.1 *)$ kubectl get svc -o wide
+NAME        TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)        AGE     SELECTOR
+back-svc    ClusterIP      10.233.45.176   <none>          9000/TCP       92s     app=back
+front-svc   LoadBalancer   10.233.3.89     192.168.0.7     80:30071/TCP   91s     app=front
+pgsql-svc   ClusterIP      10.233.7.193    51.250.105.74   5432/TCP       9m34s   app=postgres-db
+va@c9v:~/Documents/devkub-netology/DevKub/13-kubernetes-config-01-objects/src/kub/prod  (13.1 *)$ kubectl get pods -o wide
+NAME                         READY   STATUS    RESTARTS   AGE    IP               NODE    NOMINATED NODE   READINESS GATES
+app-back-54575dbff7-mqjks    1/1     Running   0          4m9s   10.233.102.158   node1   <none>           <none>
+app-front-759d8c446c-vghzf   1/1     Running   0          4m8s   10.233.102.159   node1   <none>           <none>
+postgres-sts-0               1/1     Running   0          14m    10.233.75.39     node2   <none>           <none>
+iva@c9v:~/Documents/devkub-netology/DevKub/13-kubernetes-config-01-objects/src/kub/prod  (13.1 *)$ kubectl get deploy -o wide
+NAME        READY   UP-TO-DATE   AVAILABLE   AGE     CONTAINERS   IMAGES                     SELECTOR
+app-back    0/1     1            0           4m35s   backend      egerpro/13backend:0.0.1    app=back
+app-front   0/1     1            0           4m34s   front        egerpro/13frontend:0.0.1   app=front
+
+```
+
+[Namespace](./src/kub/prod/10-namespace.yml)
+
+[PersistentVolume](./src/kub/prod/20-PersistentVolume.yml)
+
+[Postgres](./src/kub/prod/30-postgres.yml)
+
+[Back](./src/kub/prod/40-back.yml)
+
+[Front](./src/kub/prod/50-front.yml)
+
+
 ## Задание 3 (*): добавить endpoint на внешний ресурс api
 Приложению потребовалось внешнее api, и для его использования лучше добавить endpoint в кластер, направленный на это api. Требования:
 * добавлен endpoint до внешнего api (например, геокодер).
 
 ---
+
+
 
 ### Как оформить ДЗ?
 

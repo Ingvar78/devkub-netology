@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ext-svc
+  namespace: default
+spec:
+  selector: {} 
+  ports:
+    - name: publish
+      protocol: "TCP"
+      port: 80
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: publish
+  namespace: default
+subsets:
+  - addresses:
+      - ip: 51.250.105.74
+      - ip: 51.250.30.213
+    ports:
+      - name: ext-svc
+        port: 80
